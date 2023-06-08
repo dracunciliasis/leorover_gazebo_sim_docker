@@ -46,6 +46,13 @@ RUN mkdir -p /home/leo/ros2_ws/src/
 WORKDIR /home/leo/ros2_ws/src/
 RUN git clone https://github.com/gazebosim/ros_gz.git
 RUN git clone https://github.com/ros/sdformat_urdf.git
+UN git clone https://github.com/ros2/rosidl.git
+RUN  rm rosidl/rosidl_runtime_c -rf
+RUN  rm rosidl/rosidl_runtime_cpp -rf
+RUN  rm rosidl/rosidl_generator_tests/ -rf
+RUN  rm rosidl/rosidl_typesupport_introspection_ -rf
+RUN  rm rosidl/rosidl_typesupport_introspection_tests/ -rf
+
 WORKDIR /home/leo/ros2_ws/
 RUN /bin/bash -c "source /opt/ros/humble/setup.bash; colcon build --symlink-install --executor sequential"
 
